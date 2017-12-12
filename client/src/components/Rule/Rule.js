@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import LikeButton from '../LikeButton';
 
@@ -39,9 +40,9 @@ class Rule extends Component {
           <div className="btn-toolbar">
             {badges}
             <div className="btn-group btn-group-xs pull-right">
-              <a className="btn btn-primary" title="Update">
+              <Link to={`/edit/${id}`} className="btn btn-primary" title="Update">
                 <i className="glyphicon glyphicon-pencil" />
-              </a>
+              </Link>
             </div>
             <div className="btn-group btn-group-xs pull-right">
               <LikeButton ruleID={id} type="like" />

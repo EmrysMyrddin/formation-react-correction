@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import Rule from '../Rule';
 
 class RuleList extends Component {
-  componentDidMount() {
-    this.props.loadRules();
-  }
-
   render() {
     return this.props.rules.map(rule => <Rule key={rule.id} rule={rule} />);
   }
