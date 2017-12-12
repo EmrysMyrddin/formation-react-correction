@@ -1,14 +1,10 @@
 import React from 'react';
 
-const RuleDescriptionField = ({ defaultValue }) => (
-  <div className="form-group">
+const RuleDescriptionField = ({ input, meta: { error } }) => (
+  <div className={`form-group ${error ? 'has-error' : ''}`}>
     <label htmlFor="rule-desc">Description</label>
-    <textarea
-      className="form-control"
-      id="rule-desc"
-      placeholder="Description"
-      defaultValue={defaultValue}
-    />
+    {error && <span className="help-block">{error}</span>}
+    <textarea className="form-control" id="rule-desc" placeholder="Description" {...input} />
   </div>
 );
 

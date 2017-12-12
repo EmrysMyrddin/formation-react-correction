@@ -2,6 +2,8 @@ export const actions = {
   RULES_LOADED: 'RULES/RULES_LOADED',
   LIKE: 'RULES/LIKE',
   DISLIKE: 'RULES/DISLIKE',
+  ADDED: 'RULES/ADDED',
+  UPDATED: 'RULES/UPDATED',
 };
 
 export const loadRules = () => dispatch =>
@@ -35,3 +37,31 @@ export const dislike = ruleID => dispatch =>
       },
     }),
   );
+
+export const addRule = rule => dispatch =>
+  fetch('/rest/rules/', {
+    method: 'POST',
+    body: JSON.stringify(rule),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json())
+    .then(rule =>
+      dispatch({
+        type: actions.ADDED,
+        payload: { rule },
+      }),
+    );
+
+export const updateRule = rule => dispatch =>
+  fetch(`/rest/rules/${rule.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(rule),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json())
+    .then(rule =>
+      dispatch({
+        type: actions.UPDATED,
+        payload: { rule },
+      }),
+    );

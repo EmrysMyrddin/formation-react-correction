@@ -1,15 +1,10 @@
 import React from 'react';
 
-const RuleTitleField = ({ defaultValue }) => (
-  <div className="form-group">
+const RuleTitleField = ({ input, meta: { error } }) => (
+  <div className={`form-group ${error ? 'has-error' : ''}`}>
     <label htmlFor="rule-title">Title</label>
-    <input
-      type="text"
-      className="form-control"
-      id="rule-title"
-      placeholder="Title"
-      defaultValue={defaultValue}
-    />
+    {error && <span className="help-block">{error}</span>}
+    <input type="text" className="form-control" id="rule-title" placeholder="Title" {...input} />
   </div>
 );
 

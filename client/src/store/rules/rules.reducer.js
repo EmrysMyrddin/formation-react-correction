@@ -19,6 +19,12 @@ const rules = (state = initialState, action) => {
       const { ruleID } = action.payload;
       return state.map(rule => (rule.id !== ruleID ? rule : updateLikes(rule, 'dislikes', 1)));
     }
+    case actions.ADDED:
+      return [...state, action.payload.rule];
+    case actions.UPDATED: {
+      const ruleID = action.payload.rule.id;
+      return state.map(rule => (rule.id === ruleID ? action.payload.rule : rule));
+    }
     default:
       return state;
   }
