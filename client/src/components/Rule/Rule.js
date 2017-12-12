@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import LikeButton from './LikeButton';
+import LikeButton from '../LikeButton';
 
 import './Rule.css';
 
@@ -15,7 +15,7 @@ class Rule extends Component {
     this.setState({ folded: !this.state.folded || !this.props.rule.description });
 
   render() {
-    const { title, description, tags, likes, dislikes } = this.props.rule;
+    const { id, title, description, tags } = this.props.rule;
     const { folded } = this.state;
 
     const badges = tags.map(tag => (
@@ -44,8 +44,8 @@ class Rule extends Component {
               </a>
             </div>
             <div className="btn-group btn-group-xs pull-right">
-              <LikeButton initialCounter={likes} type="like" />
-              <LikeButton initialCounter={dislikes} type="dislike" />
+              <LikeButton ruleID={id} type="like" />
+              <LikeButton ruleID={id} type="dislike" />
             </div>
           </div>
         </div>
