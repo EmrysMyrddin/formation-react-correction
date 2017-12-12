@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import rules from './rules';
 
 const rootReducer = combineReducers({
@@ -7,4 +8,4 @@ const rootReducer = combineReducers({
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-export default createStore(rootReducer, enhancer);
+export default createStore(rootReducer, compose(applyMiddleware(thunk), enhancer));
