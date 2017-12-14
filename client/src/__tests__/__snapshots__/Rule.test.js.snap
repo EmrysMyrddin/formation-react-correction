@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rule should display a rule using shallow rendering 1`] = `
+<div
+  className="panel panel-primary"
+>
+  <div
+    className="panel-heading"
+    onClick={[Function]}
+    role="presentation"
+  >
+    If you don't have a mobile website, you don't have a website.
+    <i
+      className="pull-right glyphicon glyphicon-chevron-down"
+    />
+  </div>
+  <div
+    className="panel-body "
+  >
+    <p>
+      In 2014, 50% of worldwide traffic uses mobile. A website must adapt the content for mobile.
+    </p>
+  </div>
+  <div
+    className="panel-footer"
+  >
+    <div
+      className="btn-toolbar"
+    >
+      <span
+        className="badge"
+      >
+        ui
+      </span>
+      <div
+        className="btn-group btn-group-xs pull-right"
+      >
+        <a
+          className="btn btn-primary"
+          title="Update"
+        >
+          <i
+            className="glyphicon glyphicon-pencil"
+          />
+        </a>
+      </div>
+      <div
+        className="btn-group btn-group-xs pull-right"
+      >
+        <LikeButton
+          initialCounter={0}
+          type="like"
+        />
+        <LikeButton
+          initialCounter={0}
+          type="dislike"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -43,24 +43,6 @@ describe('Rule', () => {
 
     const result = renderer.getRenderOutput();
 
-    expect(result).toBeDefined();
-    expect(result.props.className).toBe('panel panel-primary');
-
-    const children = result.props.children;
-    expect(children.length).toBe(3);
-
-    const panelHeader = children[0];
-    const panelBody = children[1];
-    const panelFooter = children[2];
-
-    // Check header
-    expect(panelHeader.props.className).toBe('panel-heading');
-    expect(panelHeader.props.children[0]).toBe(rule.title);
-
-    // Check body
-    expect(panelBody.props.children).toEqual(<p>{rule.description}</p>);
-
-    // Check footer
-    expect(panelFooter.props.className).toBe('panel-footer');
+    expect(result).toMatchSnapshot();
   });
 });
