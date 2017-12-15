@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
+import find from 'lodash/find';
 
 import { like, dislike } from '../../store/rules';
 import LikeButton from './LikeButton';
 
 const mapStateToProps = (state, ownProps) => {
-  const rule = state.rules.filter(rule => rule.id === ownProps.ruleID)[0];
+  const rule = find(state.rules, { id: ownProps.ruleID });
 
   return {
     counter: ownProps.type === 'like' ? rule.likes : rule.dislikes,
