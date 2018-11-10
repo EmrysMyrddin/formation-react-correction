@@ -4,6 +4,7 @@ export const actions = {
   DISLIKE: 'RULES/DISLIKE',
   ADDED: 'RULES/ADDED',
   UPDATED: 'RULES/UPDATED',
+  SEARCH: 'RULES/SEARCH',
 };
 
 export const loadRules = () => dispatch =>
@@ -17,6 +18,18 @@ export const loadRules = () => dispatch =>
         },
       }),
     );
+    
+    export const searchRule = () => dispatch =>
+      fetch(`/rest/rules`)
+      .then(res => res.json())
+      .then(rules =>
+        dispatch({
+          type: actions.SEARCH,
+          payload: {
+            rules,
+          },
+        }),
+      );
 
 export const like = ruleID => dispatch =>
   fetch(`/rest/rules/${ruleID}/likes`, { method: 'POST' }).then(
@@ -65,3 +78,4 @@ export const updateRule = rule => dispatch =>
         payload: { rule },
       }),
     );
+    
