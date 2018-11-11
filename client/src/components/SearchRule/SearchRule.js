@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Autocomplete from "react-autocomplete";
 import Rule from "../Rule";
 import Select from "react-select";
-
 /**
  *
  * @param {*} state
@@ -97,23 +96,23 @@ class SearchRule extends Component {
 
     if (value !== "" || selectedOption !== null) {
       let filter = this.props.rules.filter(state => {
-        console.log(matchStateToTerm(state, value));
-        console.log(isContainTag(state, selectedOption));
         return (
           matchStateToTerm(state, value) && isContainTag(state, selectedOption)
         );
       });
-
       if (filter.length > 0) {
         this.setState({
           res: filter
         });
       } else {
+        alert("Aucune recherche correspondante");
         this.setState({
           res: this.props.rules
         });
       }
     } else {
+      alert("Aucune recherche correspondante");
+      console.log("salut")
       this.setState({
         res: this.props.rules
       });
@@ -159,6 +158,7 @@ class SearchRule extends Component {
 
     return (
       <div className="container">
+
         <div className="row">
           <h3>Search</h3>
           <div className="col-4">
@@ -179,7 +179,12 @@ class SearchRule extends Component {
                   this.setState({ liste: items });
                 });
               }}
-              renderMenu={children => <div className="menu">{children}</div>}
+              renderMenu={
+                children => 
+                <div className="menu">
+                  {children}
+                </div>
+              }
               renderItem={(item, isHighlighted) => (
                 <div
                   style={{ background: isHighlighted ? "lightgray" : "white" }}
