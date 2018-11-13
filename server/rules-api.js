@@ -39,6 +39,18 @@ module.exports = function rulesRouter(app) {
     return res.status(200).json(rule);
   });
 
+  app.get('/rest/rules/search/:title', (req, res) => {
+    console.info(`GET /rest/rules/${req.params.title}`);
+
+    const paramTitle = req.params.title;
+    const rule = _.find(rules, r => r.title === paramTitle);
+
+    if (!rule) {
+      return res.status(404).send();
+    }
+    return res.status(200).json(rule);
+  });
+
   app.post('/rest/rules', (req, res) => {
     console.info('POST /rest/rules');
     console.info('  => body: ', req.body);

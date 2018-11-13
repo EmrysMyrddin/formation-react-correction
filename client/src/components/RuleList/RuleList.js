@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import Rule from '../Rule';
+import SearchRule from '../SearchRule';
 
 class RuleList extends Component {
   render() {
